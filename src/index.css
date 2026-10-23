@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-cream: #FFF6E8;
+    --color-soft-white: #FFFCF7;
+    --color-butter: #F6D98B;
+    --color-caramel: #C98752;
+    --color-bread: #75452D;
+    --color-espresso: #2D1B15;
+    --color-sage: #A8B49A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: #FFF6E8;
+    color: #2D1B15;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom Warm Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FFF6E8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C98752;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #75452D;
+  }
+}
+
+@layer components {
+  /* Glassmorphism with @supports fallback (PRD 6.5) */
+  .glass-panel-espresso {
+    background: rgba(45, 27, 21, 0.72);
+    border: 1px solid rgba(246, 217, 139, 0.15);
+  }
+
+  @supports ((-webkit-backdrop-filter: blur(18px)) or (backdrop-filter: blur(18px))) {
+    .glass-panel-espresso {
+      background: rgba(45, 27, 21, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  .glass-panel-cream {
+    background: rgba(255, 252, 247, 0.92);
+    border: 1px solid rgba(201, 135, 82, 0.18);
+  }
+
+  @supports ((-webkit-backdrop-filter: blur(16px)) or (backdrop-filter: blur(16px))) {
+    .glass-panel-cream {
+      background: rgba(255, 252, 247, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 135, 82, 0.2);
+    }
+  }
+
+  /* Editorial Section Container */
+  .bakery-container {
+    width: 100%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .bakery-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+/* Seamless Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Respect reduced motion preference (PRD 13 & 5.2) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    transform: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle organic grain texture */
+.bg-grain {
+  background-image: radial-gradient(rgba(117, 69, 45, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
