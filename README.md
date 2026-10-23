@@ -1,4 +1,4 @@
-# Brrrread. — Premium Artisanal Bakery & Cinematic Pastry Experience
+# Brrrread.
 
 <div align="center">
   <p><strong>A Little Bread. A Lot of Happiness.</strong></p>
